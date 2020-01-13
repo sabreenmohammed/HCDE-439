@@ -4,4 +4,4 @@
 This is my page for the class HCDE 439, Introduction to Physical Computing. I live in Seattle, Washington and go to school at the University of Washington. I am a senior in Human Centered Design and Engineering and am minoring in computational neuroscience.
 
 Assignment list:
-1. [Blink](assignment1)
+1. [Blink](assignment1/assignment1.md)
