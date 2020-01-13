@@ -4,7 +4,7 @@
 ![Image](schematic.JPG)
 
 ### Working Circuit
-![Image](circuit.GIF)
+![Image](circuit.gif)
 
 ### Code
 ```
