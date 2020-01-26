@@ -5,4 +5,5 @@ This is my page for the class HCDE 439, Introduction to Physical Computing. I li
 
 Assignment list:
 1. [Blink](assignment1/assignment1.md)
-1. [Fade](assignment2/README.md)
+2. [Fade](assignment2/README.md)
+3. [Input Output](assignment3/README.md)
