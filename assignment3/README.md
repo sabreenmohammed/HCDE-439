@@ -1,3 +1,4 @@
 # Assignment 3: Input Output
 
-![Image](assignment3/schematic and calulations.JPG)
+![Image](calc.JPG)
+![Image](20200126_104821_1.gif)
