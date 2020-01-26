@@ -41,7 +41,6 @@ void loop() {
 
   // print the results to the Serial Monitor:
   Serial.print("sensor = ");
-```
   Serial.print(sensorValue);
   Serial.print("\t output = ");
   Serial.println(outputValue);
@@ -50,3 +49,4 @@ void loop() {
   // converter to settle after the last reading:
   delay(2);
 }
+```
