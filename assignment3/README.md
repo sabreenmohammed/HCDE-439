@@ -1,6 +1,11 @@
 # Assignment 3: Input Output
 
+In this assignment, we used sensors that changed their resistance in response to stimuli. I used a photocell, which decreased its resistance as it was exposed to more light. 
+
 ![Image](calc.JPG)
+
+The brightness of the LED is proportional to the amount of light hitting the photocell. Whenever the user blocks enough light from reaching the photocell, the current light turns off and the other light turns on. If the user does this again, the second light shuts off and the original light turns on. 
+
 ![Image](20200126_104821_1.gif)
 
 ```
