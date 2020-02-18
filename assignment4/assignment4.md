@@ -1,14 +1,20 @@
 # Assignment 4: High(er) voltage and transistors
 
 In this assignment, we used transistors to modulate the amount of current going through our circuit. Controlling transistors with Arduino pins allowed us to use higher voltage power sources.
+
 ![Image](circuit.jpg)
 
 Here, the IR remote is sending a signal to an IR receiver. This signal is sent to input pin 7. From this, an analog value for pin 9 (logic power) is calculated and sent to the transistor's gate. This controls the amount of current sent through the LED strip.
+
 ![Image](light.gif)
 
 When the user hits a button on their remote, the analog output is slowly increased to 255, and then decreased back down to zero.
 
-##Code
+## Calculations
+
+No additional resistors were used, since the LED strip has inbuilt resistors. 
+
+## Code
 ``` 
 #include <boarddefs.h>
 #include <IRremote.h>
