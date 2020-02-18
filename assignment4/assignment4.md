@@ -12,7 +12,7 @@ When the user hits a button on their remote, the analog output is slowly increas
 
 ## Calculations
 
-No additional resistors were used, since the LED strip has inbuilt resistors. 
+No additional resistors were used, since the LED strip has inbuilt resistors. For the MOSFET Transistor used, the max allowed current at 25 degrees celcius is 32A. The LED power supply provides 12V, and draws 1A of current. This is within the safe limit of the transistor.
 
 ## Code
 ``` 
