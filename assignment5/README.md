@@ -2,9 +2,11 @@
 
 In this assignment, we used serial communication to write to write sensor data to a webpage.
 
-![Image](2sensor.gif)
+![Image](schematic_and_calculations.JPG)
 
 My circuit uses two sensors to control the position of text on the screen. The photoresistor allows fine control of the text position, with low sensitivity to change in input. The potentiometer allows gross control of the text position, with higher sensitivity to change in input.
+
+![Image](2sensor.gif)
 
 ## Code
 
