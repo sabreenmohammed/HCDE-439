@@ -8,11 +8,14 @@ My circuit uses two sensors to control the position of boxes on the screen.
 1. Blocking light from the photoresistor moves the first box right, while shining more light moves the first box left.
 2. Warming the thermistor moves the second box left, while letting it cool moves it right.
 
-![Image](incoming.gif)
+![Image](outgoing.gif)
 
 My webpage also listens for click events, and determines whether one of the boxes are being clicked. Each box lights up a different LED.
 
-![Image](outgoing.gif)
+![Image](incoming.gif)
+
+### Calculations 
+See assignment 5 and assignment 1. Assignment 1's setup is used for the LEDs, and Assignment 5's setup is used for the variable resistors.
 
 ## Code
 
