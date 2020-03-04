@@ -17,15 +17,24 @@ My webpage also listens for click events, and determines whether one of the boxe
 ## Code
 
 ### Arduino Code 
-
 ```
 void setup(){
   Serial.begin(9600);
 }
 
 void loop(){
-  Serial.println(analogRead(A0) + analogRead(A1)); //reads voltage from potentiometer and photoresistor, adds them, and 
-  //sends them over the serial port.
+  String output = "[";
+  output = output + analogRead(A1) + "," + analogRead(A2) + "]";
+  Serial.println(output);
+  if (Serial.available() > 0) {   // if there's serial data 
+   int inByte = Serial.read(); // read it
+   int ledNum = bitRead(inByte, 0) + 9;
+   digitalWrite(ledNum, HIGH); // use it to set the LED brightness
+   delay(2000);
+   digitalWrite(ledNum, LOW); // use it to set the LED brightness
+
+  }  
+
   delay(50); 
 }
 
