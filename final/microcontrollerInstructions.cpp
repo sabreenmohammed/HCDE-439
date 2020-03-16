@@ -1,28 +1,34 @@
-int c0 = D3;
-int c1 = D2;
-int c2 = D1;
-int c3 = D0;
+
+int clockwise1 = D1;//hybrid yellow, in4
+int clockwise2 = D4;//purple, in7    black sticker
+int anticlockwise1 = D2;//grey, in6    gold sticker
+int anticlockwise2 = D3;//green, in5
+int run = D7; //controls power to whole relay board
 int sheetLength = 5;
-int delayTime = 5; 
-int numLoops = calculateNumLoops(sheetLength);
 void setup() {
-    int pins [] = {c0, c1, c2, c3};
-    for (int pin : pins){
-        pinMode(pin, OUTPUT);
-    }
-    Particle.function("makeBed", makeBed); //registers function in particle cloud
-    Particle.function("unmakeBed", unmakeBed); 
-    Particle.function("tuckIn", tuckIn); 
+    Particle.function("makeBed2", makeBed); //registers function in particle cloud
+    Particle.function("unmakeBed2", unmakeBed); 
+    Particle.function("tuckIn2", tuckIn); 
+    Particle.function("tweak", tweak); 
+    pinMode(D0, OUTPUT);
+    pinMode(D1, OUTPUT);
+    pinMode(D2, OUTPUT);
+    pinMode(D3, OUTPUT);
+    pinMode(D4, OUTPUT);
+    pinMode(D5, OUTPUT);
+    pinMode(D6, OUTPUT);
+    pinMode(D7, OUTPUT);
     //digitalWrite(motor, LOW); //ensures motor is off during setup (neccessary?)
 }
 
 void loop() {
+    
 }
 
 /**
  * Makes bed. 
- * paramater status--is the bed already made?
- * returns 0 if bed was successfully made, 
+ * @param status--is the bed already made?
+ * @returns 0 if bed was successfully made, 
  * 2 if the bed was already made
  * 
  **/
@@ -31,15 +37,15 @@ int makeBed(String status){
     if (bedMade)
         return 2; 
     else{
-        runClockwise();
+        runClockwise(8000);
     }
     return 0;
 }
 
 /**
  * Unmakes bed. 
- * parameter status--is the bed already made?
- * returns 0 if bed was unmade, 
+ * @param status--is the bed already made?
+ * @returns 0 if bed was unmade, 
  * 3 if the bed was already unmade
  * 
  **/
@@ -48,15 +54,15 @@ int unmakeBed(String status){
     if (!bedMade)
         return 3; 
     else{
-        runAntiClockwise();
+        runAntiClockwise(8000);
     }
     return 0;
 }
 
 /**
  * Tucks person in. 
- * parameter status--is the bed already made?
- * returns 0 if person was successfully tucked in,
+ * @param status--is the bed already made?
+ * @returns 0 if person was successfully tucked in,
  * 10 if the person was already tucked in. 
  * 
  **/
@@ -67,38 +73,42 @@ int tuckIn(String status){
 }
 
 
-int runClockwise(){
-    for (int i = 0; i < numLoops; i++){
-        for (int step = 3; step >= 0; step--)
-            activateStep(step);
+void runClockwise(int time){
+    digitalWrite(anticlockwise1, HIGH); //RELAY SWITCHES ARE INVERTED
+    digitalWrite(anticlockwise2, HIGH);
+    digitalWrite(clockwise1, LOW);
+    digitalWrite(clockwise2, LOW);
+    runBedMaker(time);
+}
+
+void runAntiClockwise(int time){
+    digitalWrite(clockwise1, HIGH); 
+    digitalWrite(clockwise2, HIGH);
+    digitalWrite(anticlockwise1, LOW);
+    digitalWrite(anticlockwise2, LOW);
+    runBedMaker(time);
+}
+
+void runBedMaker(int time){
+    int clicks = time/1000;
+    for (int i = 0; i < clicks; i++){
+        digitalWrite(run, HIGH); //NOT INVERTED
+        delay(100);
+        digitalWrite(run, LOW); 
+        delay(900);
     }
 }
 
-int runAntiClockwise(){
-  
-    for (int i = 0; i < numLoops; i++){
-        for (int step = 0; step < 4; step++)
-            activateStep(step);
+int tweak(String parameters){
+    String orientation  = parameters.substring(0, 1);
+    int time = parameters.substring (2).toInt();
+    if (orientation == "c"){
+        runClockwise(time);
+        return 0;
     }
-}
-
-int activateStep(int step){
-    delay(5);
-    digitalWrite(step, HIGH);
-    digitalWrite((step + 1) % 4, HIGH);
-    digitalWrite((step + 2) % 4, LOW);
-    digitalWrite((step + 3) % 4, LOW);
-   
-}
-
-/**
- * Calculates how many steps the motor needs to turn
- *  in order to move item across 
- * paramater distance is the distance motor pulls in cm
- * returns number of loops that must run to turn 
- * stepper motor the needed amount 
- * 
-**/
-int calculateNumLoops(int distance){
-    return 1000;
+    else if (orientation == "a"){
+        runAntiClockwise(time);
+        return 0;
+    }
+    return 1;
 }
