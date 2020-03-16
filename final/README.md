@@ -26,7 +26,7 @@ You can do 2 main things: tell Alexa to "make the bed" and tell her to "unmake t
 
 ## Sketching/Iteration
 
-![Image](Capture2.PNG)
+![Image](Capture3.PNG)
 
 ## Diagrams
 
@@ -34,13 +34,13 @@ Circuit
 ![Image](Capture4.PNG)
 
 Front of the frame 
-![Image](boxrings.PNG)
+![Image](Capture7.PNG)
 
 Top of the box
-![Image](boxaerial.PNG)
+![Image](Capture3.PNG)
 
 Side of the Frame
-![Image](bedside.PNG)
+![Image](Capture8.PNG)
 
 ## Demo
 
